@@ -1,9 +1,8 @@
 ---
 
-<<<<<<< HEAD
 - name: Checkout devsecops-workshop repo
   git:
-    repo: "https://github.com/tosin2013/devsecops-workshop.git"
+    repo: "https://github.com/{{github_user}}/devsecops-workshop.git"
     dest: "/home/{{ ansible_user }}/devsecops-workshop"
     version: "master"
     force: yes
@@ -53,6 +52,7 @@
     line: "%{{ generic_group | default('autobot') }} ALL=NOPASSWD: /usr/bin/oscap-docker"
     validate: '/usr/sbin/visudo -cf %s'
   become: true
+  when: install_oscap
 
 - name: Allow password authentication
   lineinfile: dest=/etc/ssh/sshd_config
@@ -61,7 +61,3 @@
               state=present
   become: true
   notify: Restart sshd
-=======
-- import_tasks: cicd.yml
-  when: install_cicd_projects or install_quay
->>>>>>> 05400fe9583ecab1c8e58ded41f0432687445a89
