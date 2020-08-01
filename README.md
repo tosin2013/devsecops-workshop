@@ -43,6 +43,7 @@ $ scripts/provision.sh deploy --deploy-che --ephemeral
 - git clone repo
 - cd scripts
 - update the scripts/provision-batch-init.sh with your enivornment info
+- login to openshift as admin user
 - run the scripts/provision-batch-setup.sh script
 - run the scripts/provision-batch-sonarqube.sh
 - login as as opentlc-mgr
